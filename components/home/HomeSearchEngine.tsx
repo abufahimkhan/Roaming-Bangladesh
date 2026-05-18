@@ -68,7 +68,7 @@ export function HomeSearchEngine({
     setReturnDate,
     updateMultiCityLeg,
     handleSearch,
-}: Props) {
+}: Readonly<Props>) {
     const tabs = [
         { id: 'flights', label: 'Flights', icon: <Plane className="w-4 h-4" /> },
         { id: 'hotel', label: 'Hotel', icon: <Briefcase className="w-4 h-4" /> },
@@ -120,7 +120,7 @@ export function HomeSearchEngine({
                         <form onSubmit={handleSearch} className="space-y-5">
                             {searchType !== 'multi-city' && (
                                 <div className="flex flex-col lg:flex-row gap-3 items-center w-full">
-                                    <div className="flex-1 min-w-0">
+                                    <div className="flex-1 min-w-full lg:min-w-0">
                                         <AirportSelector
                                             id="going-from"
                                             label="Going From"
@@ -152,7 +152,7 @@ export function HomeSearchEngine({
                                         <ArrowLeftRight className="w-4 h-4" />
                                     </button>
 
-                                    <div className="flex-1 min-w-0">
+                                    <div className="flex-1 min-w-full lg:min-w-0">
                                         <AirportSelector
                                             id="going-to"
                                             label="Going To"
@@ -173,8 +173,8 @@ export function HomeSearchEngine({
                                     </div>
 
                                     <div className={theme === 'dark'
-                                        ? 'flex flex-col p-4 rounded-xl border-2 transition-all bg-white/5 border-white/10 hover:border-blue-500/50 flex-1 min-w-0'
-                                        : 'flex flex-col p-5 rounded-xl border-3 transition-all bg-slate-50 border-slate-200 hover:border-blue-600 flex-1 min-w-0'}>
+                                        ? 'flex flex-col  p-4 rounded-xl border-2 transition-all bg-white/5 border-white/10 hover:border-blue-500/50 flex-1 min-w-full lg:min-w-0'
+                                        : 'flex flex-col p-5 rounded-xl border-3 transition-all bg-slate-50 border-slate-200 hover:border-blue-600 flex-1 min-w-full lg:min-w-0'}>
                                         <span className="text-[10px] font-black text-blue-600 uppercase mb-1">Departure</span>
                                         <input
                                             id="departure-date"
@@ -202,7 +202,7 @@ export function HomeSearchEngine({
 
                                     <button
                                         type="submit"
-                                        className="p-7 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-black text-sm lg:text-base transition-all shadow-xl shadow-cyan-600/30 flex items-center justify-center gap-2 relative overflow-hidden group flex-shrink-0 px-6 lg:px-8 whitespace-nowrap"
+                                        className="p-8 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white rounded-xl font-black text-sm lg:text-base transition-all shadow-xl shadow-cyan-600/30 flex items-center justify-center gap-2 relative overflow-hidden group flex-shrink-0 px-6 lg:px-8 whitespace-nowrap"
                                     >
                                         <div className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                                         {isSearching ? <Zap className="w-6 h-6 animate-spin" /> : 'Search'}

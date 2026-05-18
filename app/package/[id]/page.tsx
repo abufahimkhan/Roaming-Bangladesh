@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 import { tourPackages } from '@/lib/data';
 import Image from 'next/image';
 import Link from 'next/link';
-import { MapPin, Calendar, Users, Plane, ChevronRight, Star, ShieldCheck, Zap, Coffee, Wifi, Luggage, ArrowLeft, Info, HelpCircle } from 'lucide-react';
+import { MapPin, Calendar, Plane, Star, ShieldCheck, Zap, Coffee, Wifi, Luggage, ArrowLeft, Info, HelpCircle } from 'lucide-react';
 import { useState } from 'react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -18,7 +18,8 @@ function cn(...inputs: ClassValue[]) {
 
 export default function PackageDetailPage() {
   const params = useParams();
-  const pkg = tourPackages.find(p => p.id === params.id) || tourPackages[0];
+  const routeId = Array.isArray(params?.id) ? params.id[0] : params?.id;
+  const pkg = tourPackages.find((p) => p.id === routeId) || tourPackages[0];
   const { theme } = useAppTheme('light');
   const [isAuthOpen, setIsAuthOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'itinerary' | 'procedure'>('overview');
@@ -30,7 +31,7 @@ export default function PackageDetailPage() {
     )}>
       {/* Navigation */}
       <nav className={cn(
-        "fixed top-0 left-0 w-full z-50 px-6 lg:px-20 py-4 flex items-center justify-between border-b transition-all",
+        "fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-20 py-3 sm:py-4 flex items-center justify-between border-b transition-all",
         theme === 'dark' ? "border-white/5 bg-slate-950/80 backdrop-blur-md" : "border-slate-100 bg-white/90 backdrop-blur-md shadow-sm"
       )}>
         <Link href="/" className="flex items-center space-x-2">
@@ -45,16 +46,16 @@ export default function PackageDetailPage() {
           </div>
           <span className="text-xl font-black">ROAMING</span>
         </Link>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <Link href="/" className="text-[10px] font-black uppercase tracking-widest text-blue-600 flex items-center gap-2">
             <ArrowLeft className="w-3 h-3" /> Back
           </Link>
-          <button onClick={() => setIsAuthOpen(true)} className="px-6 py-2 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest">Account</button>
+          <button onClick={() => setIsAuthOpen(true)} className="px-3 sm:px-6 py-2 bg-blue-600 text-white rounded-xl text-[10px] font-black uppercase tracking-widest">Account</button>
         </div>
       </nav>
 
       {/* Hero Header */}
-      <section className="pt-24 h-[60vh] relative overflow-hidden">
+      <section className="pt-20 sm:pt-24 min-h-[52vh] sm:min-h-[60vh] relative overflow-hidden">
         <Image
           src={pkg.image}
           alt={pkg.package_name}
@@ -64,7 +65,7 @@ export default function PackageDetailPage() {
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
-        <div className="absolute bottom-20 left-6 lg:left-20 max-w-4xl text-white">
+        <div className="absolute bottom-12 sm:bottom-20 left-4 sm:left-6 lg:left-20 max-w-4xl text-white pr-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -83,11 +84,11 @@ export default function PackageDetailPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-5xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-4"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-4"
           >
             {pkg.package_name}
           </motion.h1>
-          <div className="flex items-center gap-6 opacity-80 text-sm font-bold uppercase tracking-widest">
+          <div className="flex flex-wrap items-center gap-3 sm:gap-6 opacity-80 text-[10px] sm:text-sm font-bold uppercase tracking-widest">
             <span className="flex items-center gap-2"><MapPin className="w-4 h-4 text-blue-500" /> {pkg.destination}</span>
             <span className="flex items-center gap-2"><Zap className="w-4 h-4 text-orange-500" /> Instant Confirmation</span>
           </div>
@@ -95,9 +96,9 @@ export default function PackageDetailPage() {
       </section>
 
       {/* Tabs / Navigation */}
-      <section className="px-6 lg:px-20 -mt-10 relative z-20">
+      <section className="px-4 sm:px-6 lg:px-20 -mt-8 sm:-mt-10 relative z-20">
         <div className={cn(
-          "max-w-7xl mx-auto rounded-[32px] shadow-2xl p-4 flex flex-col lg:flex-row gap-4",
+          "max-w-7xl mx-auto rounded-[24px] sm:rounded-[32px] shadow-2xl p-3 sm:p-4 flex flex-col lg:flex-row gap-3 sm:gap-4",
           theme === 'dark' ? "bg-slate-900 border border-white/5" : "bg-white border border-slate-100"
         )}>
           <div className="flex flex-wrap gap-2 lg:flex-1">
@@ -110,7 +111,7 @@ export default function PackageDetailPage() {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id as any)}
                 className={cn(
-                  "px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-widest flex items-center gap-3 transition-all",
+                  "px-4 sm:px-6 lg:px-8 py-3 sm:py-4 rounded-2xl text-[9px] sm:text-[10px] font-black uppercase tracking-widest flex items-center gap-2 sm:gap-3 transition-all",
                   activeTab === tab.id
                     ? "bg-blue-600 text-white shadow-xl shadow-blue-600/30 font-black"
                     : (theme === 'dark' ? "text-slate-400 hover:bg-white/5" : "text-slate-500 hover:bg-slate-50")
@@ -121,12 +122,12 @@ export default function PackageDetailPage() {
               </button>
             ))}
           </div>
-          <div className="flex items-center gap-8 px-6 lg:border-l border-inherit">
+          <div className="flex items-center justify-between sm:justify-start gap-4 sm:gap-8 px-2 sm:px-6 lg:border-l border-inherit">
             <div>
               <span className="block text-[10px] text-slate-400 uppercase font-black tracking-widest">Package Starting From</span>
-              <span className="text-3xl font-black text-blue-600">৳{pkg.price_bdt.toLocaleString()}</span>
+              <span className="text-2xl sm:text-3xl font-black text-blue-600">৳{pkg.price_bdt.toLocaleString()}</span>
             </div>
-            <button className="bg-orange-600 text-white px-10 py-4 rounded-2xl font-black text-xs uppercase tracking-widest shadow-xl shadow-orange-600/30 hover:scale-105 transition-all">
+            <button className="bg-orange-600 text-white px-5 sm:px-10 py-3 sm:py-4 rounded-2xl font-black text-[10px] sm:text-xs uppercase tracking-widest shadow-xl shadow-orange-600/30 hover:scale-105 transition-all">
               Book Now
             </button>
           </div>
@@ -134,14 +135,14 @@ export default function PackageDetailPage() {
       </section>
 
       {/* Information Content */}
-      <section className="pt-20 px-6 lg:px-20">
+      <section className="pt-12 sm:pt-16 lg:pt-20 px-4 sm:px-6 lg:px-20">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-3 gap-12">
           <div className="lg:col-span-2 space-y-12">
 
             {activeTab === 'overview' && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
                 <div>
-                  <h2 className="text-4xl font-black tracking-tighter mb-8 underline decoration-blue-600/20 underline-offset-8 decoration-4">What&apos;s Included.</h2>
+                  <h2 className="text-3xl sm:text-4xl font-black tracking-tighter mb-8 underline decoration-blue-600/20 underline-offset-8 decoration-4">What&apos;s Included.</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {[
                       { icon: <Plane className="w-6 h-6" />, title: 'Round Trip Flight', desc: 'Premium economy class tickets from Dhaka.' },
@@ -150,9 +151,9 @@ export default function PackageDetailPage() {
                       { icon: <Wifi className="w-6 h-6" />, title: 'Free Connectivity', desc: 'Local SIM card with 10GB high-speed data.' },
                       { icon: <Luggage className="w-6 h-6" />, title: 'Private Transfers', desc: 'Private luxury cars for all airport transits.' },
                       { icon: <Star className="w-6 h-6" />, title: '5-Star Stay', desc: 'Central city location premium hotel rooms.' },
-                    ].map((item, i) => (
-                      <div key={i} className={cn(
-                        "p-8 rounded-[32px] border transition-all hover:scale-[1.02]",
+                    ].map((item) => (
+                      <div key={item.title} className={cn(
+                        "p-5 sm:p-8 rounded-[24px] sm:rounded-[32px] border transition-all hover:scale-[1.02]",
                         theme === 'dark' ? "bg-white/5 border-white/5" : "bg-slate-50 border-slate-100"
                       )}>
                         <div className="text-blue-600 mb-4">{item.icon}</div>
@@ -164,7 +165,7 @@ export default function PackageDetailPage() {
                 </div>
 
                 <div>
-                  <h2 className="text-4xl font-black tracking-tighter mb-8">Package Description.</h2>
+                  <h2 className="text-3xl sm:text-4xl font-black tracking-tighter mb-8">Package Description.</h2>
                   <p className="text-slate-500 leading-relaxed text-lg font-medium">
                     Experience the ultimate getaway in {pkg.destination}. This {pkg.duration} package covers all major attractions including local city tours, traditional dinner experiences, and plenty of free time for shopping. We take care of all the logistics so you can focus on making memories.
                   </p>
@@ -174,7 +175,7 @@ export default function PackageDetailPage() {
 
             {activeTab === 'procedure' && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-12">
-                <h2 className="text-4xl font-black tracking-tighter mb-8 underline decoration-blue-600/20 underline-offset-8 decoration-4">Booking Procedure.</h2>
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tighter mb-8 underline decoration-blue-600/20 underline-offset-8 decoration-4">Booking Procedure.</h2>
                 <div className="relative space-y-8">
                   <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-blue-600/10" />
                   {[
@@ -183,8 +184,8 @@ export default function PackageDetailPage() {
                     { step: '03', title: 'Document Collection', desc: 'Our team will collect your physical documents (if required) from your doorstep.' },
                     { step: '04', title: 'Visa Processing', desc: 'We handle the embassy procedures. This usually takes 5-7 business days.' },
                     { step: '05', title: 'Travel Clearance', desc: 'Receive your e-visa and tickets in your email. Pack your bags for the journey!' },
-                  ].map((item, i) => (
-                    <div key={i} className="flex gap-8 items-start relative z-10">
+                  ].map((item) => (
+                    <div key={item.step} className="flex gap-8 items-start relative z-10">
                       <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center shrink-0 font-black text-xl shadow-lg shadow-blue-600/20">{item.step}</div>
                       <div className="pt-2">
                         <h4 className="text-2xl font-black tracking-tight mb-2">{item.title}</h4>
@@ -198,11 +199,11 @@ export default function PackageDetailPage() {
 
             {activeTab === 'itinerary' && (
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
-                <h2 className="text-4xl font-black tracking-tighter mb-8">Day-to-Day Plan.</h2>
+                <h2 className="text-3xl sm:text-4xl font-black tracking-tighter mb-8">Day-to-Day Plan.</h2>
                 <div className="space-y-4">
                   {[1, 2, 3, 4, 5].map(day => (
                     <div key={day} className={cn(
-                      "p-8 rounded-3xl border",
+                      "p-5 sm:p-8 rounded-3xl border",
                       theme === 'dark' ? "bg-white/5 border-white/5" : "bg-slate-50 border-slate-100"
                     )}>
                       <div className="flex justify-between items-center mb-4">
@@ -221,7 +222,7 @@ export default function PackageDetailPage() {
 
           <aside className="space-y-8">
             <div className={cn(
-              "p-10 rounded-[40px] border sticky top-32",
+              "p-6 sm:p-10 rounded-[28px] sm:rounded-[40px] border lg:sticky lg:top-32",
               theme === 'dark' ? "bg-slate-900 border-white/5" : "bg-slate-50 border-slate-100"
             )}>
               <div className="flex items-center gap-3 mb-8">

@@ -1,13 +1,18 @@
-import { Inter, JetBrains_Mono } from 'next/font/google';
+import { Manrope, Space_Grotesk, JetBrains_Mono } from "next/font/google";
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
+const inter = Manrope({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const display = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-display",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
+  subsets: ["latin"],
+  variable: "--font-mono",
 });
 
-export { inter, jetbrainsMono };
+export { inter, display, jetbrainsMono };

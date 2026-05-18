@@ -50,7 +50,7 @@ export default function VisaPage() {
       </div>
 
       <nav className={cn(
-        "fixed top-0 left-0 w-full z-50 px-6 lg:px-20 py-4 flex items-center justify-between border-b transition-all",
+        "fixed top-0 left-0 w-full z-50 px-4 sm:px-6 lg:px-20 py-3 sm:py-4 flex items-center justify-between border-b transition-all",
         theme === 'dark' ? "border-white/5 bg-slate-950/80 backdrop-blur-md" : "border-slate-100 bg-white/90 backdrop-blur-md shadow-sm"
       )}>
         <Link href="/" className="flex items-center space-x-2">
@@ -65,20 +65,20 @@ export default function VisaPage() {
           </div>
           <span className="text-xl font-black">ROAMING</span>
         </Link>
-        <div className="flex items-center gap-4">
-          <Link href="/" className="text-xs font-black uppercase tracking-widest text-blue-600 hover:underline">Back to Home</Link>
+        <div className="flex items-center gap-2 sm:gap-4">
+          <Link href="/" className="text-[10px] sm:text-xs font-black uppercase tracking-widest text-blue-600 hover:underline">Back to Home</Link>
           <button
             onClick={() => setIsAuthOpen(true)}
-            className="px-6 py-2 bg-blue-600 text-white rounded-xl text-xs font-black uppercase tracking-widest"
+            className="px-3 sm:px-6 py-2 bg-blue-600 text-white rounded-xl text-[10px] sm:text-xs font-black uppercase tracking-widest"
           >
             Sign In
           </button>
         </div>
       </nav>
 
-      <section className="pt-32 pb-20 px-6 lg:px-20 relative z-10">
+      <section className="pt-24 sm:pt-28 lg:pt-32 pb-14 sm:pb-20 px-4 sm:px-6 lg:px-20 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-20 items-center">
             <div>
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -88,15 +88,15 @@ export default function VisaPage() {
                 <ShieldCheck className="w-3 h-3" />
                 Trusted Visa Consultant
               </motion.div>
-              <h1 className="text-6xl md:text-7xl font-black tracking-tighter leading-[0.9] mb-8">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter leading-[0.95] mb-6 sm:mb-8">
                 Your International <br />
                 <span className="text-blue-600">Gateway.</span>
               </h1>
-              <p className="text-slate-500 text-lg font-medium max-w-lg mb-12">
+              <p className="text-slate-500 text-base sm:text-lg font-medium max-w-lg mb-8 sm:mb-12">
                 Roaring Bangladesh provides seamless visa processing services for over 50+ countries. Fast, secure, and reliable.
               </p>
 
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { icon: <Clock className="w-5 h-5" />, label: 'Fast Processing', desc: 'Average 5-7 days' },
                   { icon: <FileText className="w-5 h-5" />, label: 'Easy Documentation', desc: 'Digital upload' },
@@ -104,7 +104,7 @@ export default function VisaPage() {
                   { icon: <Star className="w-5 h-5" />, label: 'Premium Support', desc: '24/7 Assistance' },
                 ].map((item) => (
                   <div key={item.label} className={cn(
-                    "p-6 rounded-3xl border",
+                    "p-4 sm:p-6 rounded-3xl border",
                     theme === 'dark' ? "bg-white/5 border-white/5" : "bg-slate-50 border-slate-100 shadow-sm"
                   )}>
                     <div className="w-10 h-10 rounded-xl bg-blue-600/10 flex items-center justify-center text-blue-600 mb-4">
@@ -117,7 +117,7 @@ export default function VisaPage() {
               </div>
             </div>
 
-            <div className="relative">
+            <div className="relative mt-2 lg:mt-0">
               <div className="aspect-square relative rounded-[60px] overflow-hidden shadow-2xl">
                 <Image
                   src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?q=80&w=2070&auto=format&fit=crop"
@@ -135,7 +135,7 @@ export default function VisaPage() {
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ repeat: Infinity, duration: 4 }}
-                className="absolute -top-10 -right-10 bg-white p-8 rounded-[40px] shadow-2xl border border-slate-100 hidden xl:block"
+                className="absolute -top-6 -right-2 bg-white p-5 sm:p-6 rounded-[28px] shadow-2xl border border-slate-100 hidden lg:block"
               >
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center text-green-600">
@@ -152,15 +152,15 @@ export default function VisaPage() {
         </div>
       </section>
 
-      <section className={cn("py-24 px-6 lg:px-20", theme === 'dark' ? "bg-slate-900/50" : "bg-blue-50/50")}>
+      <section className={cn("py-14 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-20", theme === 'dark' ? "bg-slate-900/50" : "bg-blue-50/50")}>
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black tracking-tighter mb-4">Start Your Application</h2>
+            <h2 className="text-3xl sm:text-4xl font-black tracking-tighter mb-4">Start Your Application</h2>
             <p className="text-slate-500 font-bold uppercase text-[10px] tracking-[0.3em]">Fill the details to get started</p>
           </div>
 
           <form className={cn(
-            "p-10 rounded-[40px] border shadow-2xl grid md:grid-cols-2 gap-8",
+            "p-5 sm:p-8 lg:p-10 rounded-[28px] sm:rounded-[40px] border shadow-2xl grid md:grid-cols-2 gap-5 sm:gap-8",
             theme === 'dark' ? "bg-slate-950 border-white/10" : "bg-white border-slate-200"
           )}>
             <div className="space-y-4">
@@ -188,7 +188,7 @@ export default function VisaPage() {
                 <option>Student Visa</option>
               </select>
             </div>
-            <button className="md:col-span-2 bg-blue-600 text-white py-6 rounded-2xl font-black text-xl uppercase tracking-widest shadow-xl shadow-blue-600/20 flex items-center justify-center gap-4">
+            <button className="md:col-span-2 bg-blue-600 text-white py-4 sm:py-6 rounded-2xl font-black text-base sm:text-xl uppercase tracking-widest shadow-xl shadow-blue-600/20 flex items-center justify-center gap-3 sm:gap-4">
               Calculate Package
               <ArrowRight className="w-6 h-6" />
             </button>

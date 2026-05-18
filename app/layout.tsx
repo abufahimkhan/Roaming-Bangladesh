@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { inter, jetbrainsMono } from '@/lib/fonts';
+import { inter, display, jetbrainsMono } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -7,10 +7,12 @@ export const metadata: Metadata = {
   description: 'Experience the future of travel with AeroPulse.',
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function RootLayout(props: Readonly<{ children: React.ReactNode }>) {
+  const { children } = props;
+
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#f6fbff] text-slate-900 relative overflow-x-hidden`} suppressHydrationWarning>
+      <body className={`${inter.variable} ${display.variable} ${jetbrainsMono.variable} font-sans antialiased bg-[#f6fbff] text-slate-900 relative overflow-x-hidden`} suppressHydrationWarning>
         <div className="site-atmosphere" aria-hidden>
           <div className="aurora a1" />
           <div className="aurora a2" />

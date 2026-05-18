@@ -72,7 +72,7 @@ export default function AirportSelector({
             {isOpen && (
                 <div
                     className={cn(
-                        'absolute top-[calc(100%+6px)] left-0 right-0 border-2 rounded-2xl shadow-2xl z-[200] overflow-hidden',
+                        'absolute top-[calc(100%+6px)] left-0 right-0 border-2 rounded-2xl shadow-2xl z-[9999] overflow-y-auto',
                         theme === 'dark'
                             ? 'bg-slate-900 border-blue-500/30 shadow-blue-900/40'
                             : 'bg-white border-blue-100 shadow-blue-100/60'

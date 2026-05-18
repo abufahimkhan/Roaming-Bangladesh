@@ -459,11 +459,7 @@ export default function Home() {
                                                 <div className="absolute inset-1 rounded-full border border-rose-200/90" />
                                             </div>
                                         </motion.div>
-                                        <motion.div
-                                            animate={{ left: ['0%', '100%'], opacity: [0.2, 0.75, 0.2] }}
-                                            transition={{ duration: 4.8, repeat: Infinity, ease: 'linear' }}
-                                            className="absolute top-0 -translate-y-1/2 -translate-x-[56px] w-14 h-[2px] rounded-full bg-gradient-to-r from-transparent via-rose-300/85 to-transparent"
-                                        />
+
                                         <div className="mt-2 flex justify-between text-[9px] font-black text-slate-400 uppercase tracking-wider">
                                             <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> 7h 45m</span>
                                             <span className="flex items-center gap-1 text-green-500"><Zap className="w-3 h-3 fill-current" /> Non-Stop</span>
@@ -643,7 +639,7 @@ function TourCard(props: Readonly<{ pkg: any; index: number; theme: string; vari
                         ))}
                     </div>
 
-                    <div className="flex items-center justify-between pt-4 border-slate-200 border-t border-inherit mt-auto">
+                    <div className="flex items-center justify-between pt-4 border-t border-inherit mt-auto">
                         <div>
                             <span className="text-[10px] text-slate-400 uppercase font-black tracking-widest mb-1 flex items-center gap-2">
                                 <Star className="w-3 h-3 text-orange-400 fill-current" /> {(pkg.rating ?? 4.9).toFixed(1)} Rating

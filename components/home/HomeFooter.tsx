@@ -8,9 +8,9 @@ type Props = {
     theme: string;
 };
 
-export function HomeFooter({ theme }: Props) {
+export function HomeFooter({ theme }: Readonly<Props>) {
     const authPartners = [
-        { name: 'IATA', logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/d/d7/IATA_logo.svg/1200px-IATA_logo.svg.png', color: 'bg-blue-50' },
+        { name: 'IATA', logo: 'https://picsum.photos/seed/iata/200/80', color: 'bg-blue-50' },
         { name: 'Aftab', logo: 'https://images.unsplash.com/photo-1620288627223-53302f4e8c74?q=80&w=100&h=100&auto=format&fit=crop', color: 'bg-green-50' },
         { name: 'Civil', logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?q=80&w=100&h=100&auto=format&fit=crop', color: 'bg-orange-50' },
         { name: 'North', logo: 'https://images.unsplash.com/photo-1599305090598-fe179d501227?q=80&w=100&h=100&auto=format&fit=crop', color: 'bg-purple-50' },
