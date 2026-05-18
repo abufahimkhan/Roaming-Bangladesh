@@ -3,10 +3,11 @@
 </div>
 
 # Run and deploy your AI Studio app
-
-This contains everything you need to run your app locally.
-
-View your app in AI Studio: https://ai.studio/apps/8b2d8672-3267-48e1-a1b5-820892f71cc9
+ROAMING
+Bangladesh
+Let's Explore
+The World Together.
+Trusted travel partner offering the best deals on flights, hotels, and holiday packages globally.
 
 ## Run Locally
 

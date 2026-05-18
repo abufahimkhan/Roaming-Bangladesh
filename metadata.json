@@ -1,0 +1,6 @@
+{
+  "name": "Roaming Bangladesh",
+  "description": "Leading travel agency in Bangladesh offering flights, tour packages, and visa services with a modern digital experience.",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
